@@ -2,6 +2,6 @@
 {
     public class IMDBResponseList
     {
-        public List<IMDBResponse>? MovieList { get; set; }
+        public List<IMDBResponse> MovieList { get; set; }
     }
 }

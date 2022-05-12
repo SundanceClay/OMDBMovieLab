@@ -46,9 +46,9 @@ namespace IMDB.Controllers
             return RedirectToAction("SearchMovieTriple", responseList);
         }
 
-        public async Task<IActionResult> SearchMovieTriple(IMDBResponseList responseList)
+        public async Task<IActionResult> SearchMovieTriple(IMDBResponseList movieResponseList)
         {
-            return View(responseList);
+            return View(movieResponseList);
         }
 
         public async Task<IMDBResponse> SearchMovie(string searchTerm) // call this 3 times for 3 movies
