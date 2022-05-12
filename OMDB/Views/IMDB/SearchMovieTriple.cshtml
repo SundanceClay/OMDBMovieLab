@@ -1,0 +1,17 @@
+﻿@model IMDBResponseList
+
+@if(Model.MovieList != null)
+{
+    foreach(IMDBResponse movie in Model.MovieList)
+    {
+        <img src="movie.Poster" />
+        <p>movie.Title</p>
+        <p>movie.Year</p>
+        <p>movie.Plot</p>
+        <p>movie.Director</p>
+        <p>movie.Runtime</p>
+    }
+
+}
+else
+    Console.WriteLine("The list is empty.");

@@ -1,0 +1,43 @@
+﻿@model IMDB.Models.TripleSearch
+    
+@{
+    ViewData["Title"] = "MovieNight";
+}
+
+<h1>Search for 3 Movies for MovieNight</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="MovieNight">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="SearchTerm1" class="control-label"></label>
+                <input asp-for="SearchTerm1" class="form-control" />
+                <span asp-validation-for="SearchTerm1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SearchTerm2" class="control-label"></label>
+                <input asp-for="SearchTerm2" class="form-control" />
+                <span asp-validation-for="SearchTerm2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SearchTerm3" class="control-label"></label>
+                <input asp-for="SearchTerm3" class="form-control" />
+                <span asp-validation-for="SearchTerm3" class="text-danger"></span>
+            </div>
+
+            <div class="form-group"><br />
+                <input type="submit" value="Search" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<div>
+    <a asp-controller="Home" asp-action="Index">Home</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
