@@ -33,23 +33,20 @@ namespace IMDB.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> MovieNight(TripleSearch movie1, TripleSearch movie2, TripleSearch movie3)
+        public async Task<IActionResult> SearchMovieTriple(TripleSearch movieNight)
         {
-            IMDBResponse response1 = await SearchMovie(movie1.SearchTerm1);
-            IMDBResponse response2 = await SearchMovie(movie2.SearchTerm2);
-            IMDBResponse response3 = await SearchMovie(movie3.SearchTerm3);
+            IMDBResponse response1 = await SearchMovie(movieNight.SearchTerm1);
+            IMDBResponse response2 = await SearchMovie(movieNight.SearchTerm2);
+            IMDBResponse response3 = await SearchMovie(movieNight.SearchTerm3);
             List<IMDBResponse> responseList = new List<IMDBResponse>();
             responseList.Add(response1);
             responseList.Add(response2);
             responseList.Add(response3);
             
-            return RedirectToAction("SearchMovieTriple", responseList);
+            return View(responseList);
         }
 
-        public async Task<IActionResult> SearchMovieTriple(IMDBResponseList movieResponseList)
-        {
-            return View(movieResponseList);
-        }
+  
 
         public async Task<IMDBResponse> SearchMovie(string searchTerm) // call this 3 times for 3 movies
         {
@@ -58,7 +55,6 @@ namespace IMDB.Controllers
             client.BaseAddress = new Uri("http://www.omdbapi.com");
 
             // client.DefaultRequestHeaders.Add("ApiKey", "5785a2a5");
-
             var response = await client.GetFromJsonAsync<IMDBResponse>("?t=" + searchTerm + "&apiKey=5785a2a5");
 
             return response;

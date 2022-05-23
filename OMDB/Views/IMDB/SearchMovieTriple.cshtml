@@ -1,17 +1,24 @@
-﻿@model IMDBResponseList
+﻿@model List<IMDBResponse>
 
-@if(Model.MovieList != null)
+@if(Model != null)
 {
-    foreach(IMDBResponse movie in Model.MovieList)
-    {
-        <img src="movie.Poster" />
-        <p>movie.Title</p>
-        <p>movie.Year</p>
-        <p>movie.Plot</p>
-        <p>movie.Director</p>
-        <p>movie.Runtime</p>
-    }
-
+  @foreach(IMDBResponse movie in Model)
+  {
+    <div class="container-fluid">
+        <div class="row">
+          <div class="col-xl-6 col-lg-6 col-md-6" style="border:1px solid #ddd">
+            <img src="@movie.Poster" alt="responsive webite" class="img-fluid">
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-6" style="border:1px solid #ddd">
+            <h2>@movie.Title</h2>
+            <h3>@movie.Year</h3>
+            <p>@movie.Plot</p>
+            <p>@movie.Director</p>
+            <p>@movie.Runtime</p>
+          </div>
+        </div>
+    </div>
+  }
 }
 else
 {
